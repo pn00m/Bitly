@@ -5,7 +5,7 @@ from urllib.parse import urlparse
 import requests
 from dotenv import load_dotenv
 
-api_url = "https://api-ssl.bitly.com/v4/"
+API_URL = "https://api-ssl.bitly.com/v4/"
 bitlink_token = os.environ['BITLY_TOKEN']
 
 
@@ -13,7 +13,7 @@ def shorten_link(headers, link):
     long_url = {
         "long_url": link,
     }
-    url_shorten = f"{api_url}shorten"
+    url_shorten = f"{API_URL}shorten"
     response = requests.post(url_shorten, headers=headers, json=long_url)
     bitlink = response.json()
     return bitlink['id']
@@ -24,13 +24,13 @@ def count_clicks(headers, link):
         ('unit', 'day'),
         ('units', '-1')
     }
-    url_clicks = f"{api_url}bitlinks/{link}/clicks/summary"
+    url_clicks = f"{API_URL}bitlinks/{link}/clicks/summary"
     response = requests.get(url_clicks, headers=headers, params=params)
     return response.json()
 
 
 def is_bitlink(headers, link):
-    is_bitlink_url = f"{api_url}bitlinks/{link}"
+    is_bitlink_url = f"{API_URL}bitlinks/{link}"
     response = requests.get(is_bitlink_url, headers=headers)
     return response.ok
 
