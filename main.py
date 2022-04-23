@@ -1,8 +1,10 @@
-import os
-import requests
-from urllib.parse import urlparse
 import argparse
+import os
+from urllib.parse import urlparse
+
+import requests
 from dotenv import load_dotenv
+
 api_url = "https://api-ssl.bitly.com/v4/"
 bitlink_token = os.environ['BITLY_TOKEN']
 
