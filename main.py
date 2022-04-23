@@ -6,7 +6,6 @@ import requests
 from dotenv import load_dotenv
 
 API_URL = "https://api-ssl.bitly.com/v4/"
-bitlink_token = os.environ['BITLY_TOKEN']
 
 
 def shorten_link(headers, link):
@@ -43,6 +42,7 @@ def check_url_accessibility(link):
 
 def main():
     load_dotenv()
+    bitlink_token = os.environ['BITLY_TOKEN']
     oauth_headers = {
         "Authorization": f"Bearer {bitlink_token}"
     }
