@@ -3,12 +3,8 @@ import requests
 from urllib.parse import urlparse
 import argparse
 from dotenv import load_dotenv
-load_dotenv()
 api_url = "https://api-ssl.bitly.com/v4/"
 bitlink_token = os.environ['BITLY_TOKEN']
-oauth_headers = {
-    "Authorization": f"Bearer {bitlink_token}"
-}
 
 
 def shorten_link(headers, link):
@@ -44,6 +40,10 @@ def check_url_accessibility(link):
 
 
 def main():
+    load_dotenv()
+    oauth_headers = {
+        "Authorization": f"Bearer {bitlink_token}"
+    }
     parser = argparse.ArgumentParser()
     parser.add_argument('input_url', help='Ссылка для обрезки или статистики')
     args = parser.parse_args()
