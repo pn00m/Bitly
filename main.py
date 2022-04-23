@@ -44,7 +44,6 @@ def check_url_accessibility(link):
 
 
 def main():
-    # input_link = input('Введите ссылку: ')
     parser = argparse.ArgumentParser()
     parser.add_argument('input_url', help='Ссылка для обрезки или статистики')
     args = parser.parse_args()
